@@ -3,11 +3,18 @@
 //   age: number;
 // } = {
 const person :{
-  name: String,
-  age : number
-}= {
-  name: 'Maximilian',
-  age: 30
+  name:string;
+  age:number;
+  hobbies:string[];
+  role:[number,string];
+}={
+  name: 'maximilian',
+  age : 30,
+  hobbies:['sports','Cooking'],
+  role:[2,'author']
 };
+let favoriteActivities: string[];
+favoriteActivities = ['sports'];
+
 
 console.log(person.name);
