@@ -1,15 +1,15 @@
-// const person: {
-//   name: string;
-//   age: number;
-// } = {
-enum Role{ADMIN,READ_ONLY,AUTHOR};
-
-const person = {
-  name: 'maximilian',
-  age : 30,
-  role:Role.ADMIN
-};
-let test_array:any; // 이딴 식을 쓰지마삼 any는 꼭 필요할때만 사용하기
-test_array = ['sports',3]
-console.log(person.role);
-console.log(Role[person.role]);
+function combine(input1:number|string,input2:number|string, resultConversion:'as-number'|'as-text'){
+    let result;
+    if(typeof input1==='number' && typeof input2==='number' || resultConversion ==='as-number'){
+        result = +input1 + +input2;
+    } else{
+        result = input1.toString() + input2.toString();
+    }
+    return result;
+}
+const combineAges1 = combine(30,26,'as-number');
+const combineAges2 = combine('30','26','as-number');
+const combineNames = combine("Test","Value",'as-text')
+console.log(combineAges1);
+console.log(combineAges2);
+console.log(combineNames);
