@@ -1,20 +1,12 @@
-type Combinable = number | string;
-type ConvsersionDescriptor = 'as-number'|'as-text';
-function combine(
-    input1:Combinable,
-    input2:Combinable,
-    resultConversion:ConvsersionDescriptor){
-    let result;
-    if(typeof input1==='number' && typeof input2==='number' || resultConversion ==='as-number'){
-        result = +input1 + +input2;
-    } else{
-        result = input1.toString() + input2.toString();
-    }
-    return result;
+function add(n1:number,n2:number):number{ //결과값을 추론할 수 있음
+    return n1 + n2;
 }
-const combineAges1 = combine(30,26,'as-number');
-const combineAges2 = combine('30','26','as-number');
-const combineNames = combine("Test","Value",'as-text')
-console.log(combineAges1);
-console.log(combineAges2);
-console.log(combineNames);
+function printResult(num:number):void{
+    console.log('Result:'+num);
+}
+printResult(add(3,5));
+
+let combineValues:(a:number,b:number) => number;
+combineValues = add;
+combineValues = printResult; //일부러 에러낸거
+console.log(combineValues(4,5));
