@@ -1,12 +1,12 @@
 // Code goes here!
-class Department {
+abstract class Department {
     static fiscalYear = 2020;
     // private id:string;
     // private name:string;
     // public employees:string[] = [];
     protected employees: string[] = [];
 
-    constructor(private readonly id: string, public name: string) {
+    constructor(protected readonly id: string, public name: string) {
         // this.id = id;
         // this.name = n;
         console.log(Department.fiscalYear); //o
@@ -17,9 +17,7 @@ class Department {
         return{name:name};
     }
 
-    describe(this: Department) {
-        console.log(`Department(${this.id}): ${this.name}`);
-    }
+    abstract describe(this: Department):void ;
 
     addEmployee(employee: string) {
         this.employees.push(employee);
@@ -39,10 +37,9 @@ class ITDepartment extends Department {
         this.admins = admins;
     }
 
-    // describe() {
-    //     super.describe();
-    //     console.log(`admins: ${this.admins}`)
-    // }
+    describe() {
+        console.log(`IT Department - ID: ${this.id}`);
+    }
 
 }
 
@@ -64,8 +61,11 @@ class AccountingDepartment extends Department {
     }
 
     constructor(id: string, private reports: string[]) {
-        super(id, 'IT');
+        super(id, 'Accounting');
         this.lastReports = reports[0];
+    }
+    describe() {
+        console.log('Accounting Department - ID: ' + this.id);
     }
 
     addEmployee(name: string) {
@@ -98,7 +98,7 @@ console.log(employee1,Department.fiscalYear);
 
 const accounting = new AccountingDepartment('d2', []);
 
-accounting.mostRecentReport = '';
+// accounting.mostRecentReport = '';
 accounting.addReport('something went wrong');
 
 console.log(accounting.mostRecentReport);
@@ -108,6 +108,7 @@ accounting.addEmployee('Manu');
 
 accounting.printReports();
 accounting.printEmployeeInformation();
+accounting.describe();
 
 // const accountingCopy :Department = {
 //     name:'test',
