@@ -5,7 +5,7 @@ class Department{
     // public employees:string[] = [];
     private employees:string[] = [];
 
-    constructor(private id:string, private name: string) {
+    constructor(private readonly id:string, public name: string) {
         // this.id = id;
         // this.name = n;
     }
